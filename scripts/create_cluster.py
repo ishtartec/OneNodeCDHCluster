@@ -9,7 +9,10 @@ import sys
 
 def wait(cmd, timeout=None):
     SYNCHRONOUS_COMMAND_ID = -1
-    if cmd.id == SYNCHRONOUS_COMMAND_ID:
+    try:
+        if cmd.id == SYNCHRONOUS_COMMAND_ID:
+            return cmd
+    except AttributeError:
         return cmd
 
     SLEEP_SECS = 5
